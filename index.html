@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Redirecting to DIPG/DMG Research Dashboard</title>
+    <title>Critical Notice: Deprecated Environment</title>
     
-    <!-- Automatic redirect after 5 seconds -->
-    <meta http-equiv="refresh" content="5; url=https://dipg-dmg.org/">
+    <!-- Extreme fallback only (60 seconds). We want them to click manually. -->
+    <meta http-equiv="refresh" content="60; url=https://dipg-dmg.org/">
     <link rel="canonical" href="https://dipg-dmg.org/">
     <meta name="robots" content="noindex, follow">
 
     <style>
         :root {
+            /* Strict adherence to the original color palette */
             --bg-color: #0b1120;
             --card-bg: #111c33;
             --border-color: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent-blue: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-glow: rgba(56, 189, 248, 0.2);
         }
 
         * {
@@ -42,73 +43,169 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 3rem 2.5rem;
-            max-width: 580px;
+            padding: 3.5rem 2.5rem;
+            max-width: 620px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow);
+            box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top highlight bar using the original accent color */
+        .redirect-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-blue);
+        }
+
+        /* Inverted Badge for maximum attention without breaking the palette */
+        .notice-badge {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: var(--bg-color);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .headline {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .notice-text {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 1.75rem;
-            line-height: 1.4;
+            line-height: 1.5;
+        }
+
+        .highlight-date {
+            color: var(--text-main);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 2px;
+        }
+
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .main-link {
             display: inline-block;
             background: rgba(56, 189, 248, 0.1);
             color: var(--accent-blue);
-            font-size: 1.6rem;
+            font-size: 1.25rem;
             font-weight: 700;
             text-decoration: none;
-            padding: 1.1rem 2.2rem;
+            padding: 1.1rem 2rem;
             border-radius: 12px;
             border: 1px solid var(--accent-blue);
             transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+            width: 100%;
+            max-width: 450px;
         }
 
         .main-link:hover {
             background: var(--accent-blue);
-            color: #0b1120;
+            color: var(--bg-color);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
         }
 
-        .redirect-timer {
-            margin-top: 2rem;
-            font-size: 0.9rem;
+        .action-callout {
+            margin-top: 1.5rem;
+            padding: 1.2rem 1.4rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 8px;
+            font-size: 1.05rem;
             color: var(--text-muted);
+            line-height: 1.55;
+            text-align: left;
+        }
+
+        .action-callout strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .copy-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .copy-link:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
     <div class="redirect-card">
-        <p class="notice-text">DIPG/DMG Research Dashboard is now live on:</p>
+        <!-- Inverted high-contrast badge -->
+        <span class="notice-badge">Shutdown Notice</span>
+
+        <h1 class="headline">This Address is Being Deleted</h1>
         
-        <a href="https://dipg-dmg.org/" class="main-link">https://dipg-dmg.org ↗</a>
-        
-        <p class="redirect-timer">
-            Redirecting automatically in <span id="countdown">5</span> seconds...
+        <p class="notice-text">
+            You are still accessing the DIPG-DMG dashboard with an outdated link.<br>This address will be permanently deactivated on <span class="highlight-date">October 18th</span>.
         </p>
+
+        <div class="action-callout">
+            <strong>Required Action</strong>
+            Delete this old bookmark and replace it with the official domain:<br>
+            <span class="copy-link" id="copy-btn" onclick="copyUrl()">
+                https://dipg-dmg.org 
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </span>
+        </div>
+        
+        <div class="link-container">
+            <a href="https://dipg-dmg.org/" class="main-link">Acknowledge & Access dipg-dmg.org ↗</a>
+        </div>
     </div>
 
     <script>
-        let timeLeft = 5;
-        const countdownElem = document.getElementById('countdown');
-        
-        const timer = setInterval(() => {
-            timeLeft--;
-            if (countdownElem) {
-                countdownElem.textContent = timeLeft;
-            }
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                window.location.replace("https://dipg-dmg.org/");
-            }
-        }, 1000);
+        function copyUrl() {
+            navigator.clipboard.writeText("https://dipg-dmg.org/").then(() => {
+                const btn = document.getElementById('copy-btn');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '✓ Copied to clipboard';
+                btn.style.color = '#f8fafc';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.color = 'var(--accent-blue)';
+                }, 2500);
+            });
+        }
     </script>
 </body>
 </html>
